@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Declare global variables
+// Global variables
 char square[10] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 int choice, player;
 
@@ -29,14 +29,14 @@ int main() {
         printf("PLAYER %d, ENTER A NUMBER: ", player);
         scanf("%d", &choice);
 
-        mark = (player == 1) ? 'X' : 'O';
+        mark = (player == 1) ? 'X' : 'O'; // If player 1, mark in X - otherwise mark in O
 
         markBoard(mark); // Set board for player choice
 
         gameStatus = checkForWin();
         player++;
     }while (gameStatus == -1);
-
+    
     if (gameStatus == 1)
         printf("PLAYER %d WINS!", --player);
     else
@@ -64,7 +64,7 @@ int checkForWin() {
         returnValue = 1;
     else if (square[3] == square[5] && square[5] == square[7])
         returnValue = 1;
-    // Check for board misalignment
+    // Check for draw
     else if (square[1] != '1' && square[2] != '2' && square[3] != '3' && square[4] != '4' && square[5] != '5'
              && square[6] != '6' && square[7] != '7' && square[8] != '8' && square[9] != '9')
         returnValue = 0;
